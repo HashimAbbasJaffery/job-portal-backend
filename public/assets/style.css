@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@300;500;700&display=swap");
+:root {
+  --base: #111433;
+  --secondary: #b8d433;
+  --baseShade: #1e235c;
+  --primary-font: "Montserrat", sans-serif;
+  --secondary-font: "Poppins", sans-serif;
+}
+body {
+  background-color: var(--base);
+  color: var(--base);
+  font-family: var(--primary-font);
+}
+.login {
+  width: 30%;
+  background-color: var(--secondary);
+  margin: 0 auto;
+  padding: 50px;
+  border: 2px solid var(--base);
+  border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: 0px 0px 49px 1px rgba(185, 212, 51, 0.59);
+  -moz-box-shadow: 0px 0px 49px 1px rgba(185, 212, 51, 0.59);
+  box-shadow: 0px 0px 49px 1px rgba(185, 212, 51, 0.59);
+}
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+#content form {
+  padding: 20px;
+}
+.login-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 10px;
+}
+#login-button {
+  background: var(--base);
+}
+#login-button:hover {
+  background: var(--baseShade);
+}
+#content input, #content textarea {
+  background: var(--secondary);
+  border: 1px solid black;
+  color: black;
+}
+#content input::placeholder , #content textarea::placeholder{
+  color: rgb(111, 110, 110);
+}
+#logo-detail {
+  display: flex;
+  align-items: center;
+}
+
+#content textarea {
+    resize: none;
+    height: 90px;
+}
