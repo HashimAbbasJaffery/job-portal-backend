@@ -19,14 +19,9 @@
             <x-auth-session-status class="mb-4" :status="session('status')" />
             <section id="content">
                 <form method="POST" action="{{ route('password.email') }}">
-                    <p style="margin-bottom: 10px;">
-                        <i>
-                            Forgot Password? Provide us your email associated to your account to recover your
-                            password
-                        </i>    
-                    </p>
                     @csrf
                     <div class="mb-4">
+                        <p>Forgot password?</p>
                         <label class="block text-gray-700 font-bold mb-2" for="email">
                             Email
                         </label>
