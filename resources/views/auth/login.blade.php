@@ -32,7 +32,7 @@
                         <label class="block text-gray-700 font-bold mb-2" for="password">
                           Password
                         </label>
-                        <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+                        <input name="password" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
                         <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                       </div>
@@ -40,9 +40,11 @@
                         <button type="submit" id="login-button" class="text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                           Log in
                         </button>
-                        <a class="inline-block align-baseline font-bold hover:text-blue-800" href="#">
-                          Forgot Password?
-                        </a>
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}" class="inline-block align-baseline font-bold hover:text-blue-800">
+                                Forgot Password?
+                            </a>
+                        @endif
                       </div>
                 </form>
             </section>
