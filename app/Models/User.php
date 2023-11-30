@@ -44,4 +44,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function contacts() {
+        return $this->belongsToMany(User::class, 'contact_relationship', 'user_id_1', 'user_id_2')
+            ->withPivot(["user_id_1", "user_id_2"])
+            ->orWhere(function ($query) {
+                $query->where('user_id_2', $this->id)
+                    ->orWhere('user_id_1', $this->id);
+            });
+    }
 }

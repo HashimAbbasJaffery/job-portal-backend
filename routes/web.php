@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MessageController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,21 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get("/chats", [ChatController::class, "index"]);
+Route::post("/sendMessage", [MessageController::class, "store"]);
+
+Route::get("/createUser", function() {
+    User::create([
+        "name" => "dummy",
+        "last_name" => "The dummy",
+        "address" => "The address",
+        "email" => "testings@gmail.com",
+        "password" => Hash::make("12345")
+    ]);
+});
+
+Route::get("/get/message/{key}", [MessageController::class, "get"]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
