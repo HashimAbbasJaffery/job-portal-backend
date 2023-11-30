@@ -29,10 +29,8 @@ contacts.forEach(contact => {
             console.log(data)
             const chatBox = document.querySelector(".chat-box");
             const sender_id = document.getElementById("sender_id");
-            if(sender_id == data.sender_id) {
-            
+            if(parseInt(sender_id.value) !== data.sender_id) {
                 chatBox.innerHTML += messageTemplate("reciever", data.message, "testing");
-            } else {
             } 
             
             var myDiv = document.querySelector('.chat-box');

@@ -27,8 +27,7 @@ class ChatController extends Controller
                 $user["message_id"] = $rawContact->message_id;
                 array_push($contacts, $user);
             }
-        }
-        
+        }        
         return view("chat", compact("contacts"));
     }
 }
