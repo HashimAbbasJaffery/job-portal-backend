@@ -12,9 +12,9 @@
                             </div>
                             <div class="contact-name chat-detail">
                                 
-                                <div >
+                                <div>
                                     <h1>{{ $contact->name }}</h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, praesentium...</p>
+                                    <p class="recent-messages recent-{{ $contact->message }}">{{ $contact?->lastMessage->name ?? "" }}: {{ $contact?->lastMessage->message ?? "No Message Found" }}</p>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                             <img src="https://placehold.co/50x50" />
                         </div>
                         <div class="profile-detail">
-                            <h1 class="user-{{ $contact->id }}">Hashim abbas</h1>
+                            <h1 class="user-contact">Hashim abbas</h1>
                             <div class="online">Online <div class="online-status">&nbsp;</div></div>
                         </div>
                     </div>

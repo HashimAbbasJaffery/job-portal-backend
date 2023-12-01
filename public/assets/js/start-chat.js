@@ -1,16 +1,22 @@
 import messageTemplate from "./messageTemplate.js";
 import pusher from "./pusherConfig.js";
+import { truncateString } from "./utils/helpers.js";
 
 const contacts = document.querySelectorAll(".contact");
 contacts.forEach(contact => {
     contact.addEventListener("click", function() {
-        const name = contact.dataset.name;
-        const id = contact.dataset.id;
-        const key = contact.dataset.key;
-        const recieverId = document.getElementById("reciever_id")
-        recieverId.value = id;
-        const usernameLabel = document.querySelector(`.user-${id}`);
-        usernameLabel.textContent = name;
+    const name = contact.dataset.name;
+    const id = contact.dataset.id;
+    const key = contact.dataset.key;
+    
+    const activeContact = document.querySelector(".active-contact");
+    activeContact?.classList.remove("active-contact");
+
+    contact.classList.add("active-contact");
+    const recieverId = document.getElementById("reciever_id")
+    recieverId.value = id;
+    const usernameLabel = document.querySelector(`.user-contact`);
+    usernameLabel.textContent = name;
 
         
     const senderId = document.getElementById("sender_id");
@@ -26,11 +32,16 @@ contacts.forEach(contact => {
         
 
         channel.bind('dispatch-message', function(data) {
-            console.log(data)
+            const recentMessage = document.querySelector(".active-contact .recent-messages");
             const chatBox = document.querySelector(".chat-box");
             const sender_id = document.getElementById("sender_id");
+            
+            // It executes when the message is recieved by another person to append the data
+            // into the chat box
+
             if(parseInt(sender_id.value) !== data.sender_id) {
                 chatBox.innerHTML += messageTemplate("reciever", data.message, "testing");
+                recentMessage.textContent = truncateString(60, data.message);
             } 
             
             var myDiv = document.querySelector('.chat-box');

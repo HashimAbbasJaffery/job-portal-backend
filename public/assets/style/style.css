@@ -245,6 +245,10 @@ form{
     background-color: whitesmoke;
     cursor: pointer;
 }
+.active-contact {
+    background-color: whitesmoke;
+    cursor: pointer;
+}
 .contact-name {
     font-family: sans-serif;
     font-size: 15px;
@@ -300,7 +304,9 @@ form{
 .active {
     background-color: whitesmoke;
 }
-
+.none {
+    display: none;
+}
 
 
 
