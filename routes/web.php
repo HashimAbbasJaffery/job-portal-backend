@@ -30,10 +30,10 @@ Route::post("/sendMessage", [MessageController::class, "store"]);
 
 Route::get("/createUser", function() {
     User::create([
-        "name" => "dummy",
-        "last_name" => "The dummy",
-        "address" => "The address",
-        "email" => "testings@gmail.com",
+        "name" => "hashim abbas",
+        "last_name" => "jaffery",
+        "address" => "shidfhsd",
+        "email" => "habbas2121@outlook.com",
         "password" => Hash::make("12345")
     ]);
 });

@@ -3,6 +3,7 @@
 use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserOnlineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+
+Route::middleware('auth:api')->put('user/{user}/online', UserOnlineController::class);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

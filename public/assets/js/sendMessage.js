@@ -1,12 +1,17 @@
 import messageTemplate from "./messageTemplate.js";
 const form = document.querySelector(".messageForm");
+import { truncateString } from "./utils/helpers.js";
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     const chatbox = document.querySelector(".chat-box");
     const message = document.querySelector(".messageContent");
+    const activeContact = document.querySelector(".active-contact");
+    const key = activeContact.dataset.key;
 
-    const username = document.getElementById("username");
+    let recentMessage = document.querySelector(".active-contact .recent-messages");
+    const string = `${username.value}: ${message.value}`;
+    recentMessage.textContent = truncateString(60, string);
     chatbox.innerHTML += messageTemplate("sender", message.value, username.value);
     const lastMessage = message.value;
     message.value = "";
@@ -20,7 +25,8 @@ form.addEventListener("submit", function(e) {
     axios.post("/sendMessage", {
         sender_id: senderId.value,
         reciever_id: recieverIds.value,
-        message: lastMessage
+        message: lastMessage,
+        key: key
     })
         .then(res => {
             console.log(res)

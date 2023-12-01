@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Notification extends Model
 {
-    protected $table = "chat_messages";
+    protected $table = "notification";
     protected $guarded = [];
     use HasFactory;
 }

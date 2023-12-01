@@ -30,3 +30,36 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+import Echo from "laravel-echo"
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '4df466d966a05206294a',
+    cluster: 'ap2',
+    encrypted: true
+});
+
+Echo.join('chat')
+.joining((user) => {
+    axios.put('/api/user/'+ user.id +'/online?api_token=' + user.api_token, {});
+});
+
+Echo.join('chat')
+.listen('UserOnline', (e) => {
+    this.friend = e.user;
+})
+
+Echo.join('chat')
+    .leaving((user) => {
+    axios.put('/api/user/'+ user.id +'/offline?api_token=' + user.api_token, {});
+    })
+
+    Echo.join('chat')
+    .listen('UserOffline', (e) => {
+        this.friend = e.user;
+    });
+
+    alert("lol");
+
+
