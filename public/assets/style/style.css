@@ -334,3 +334,50 @@ form{
 .pagination li a{
     color: black;
 }
+
+
+/********************* NOTIFICATIONS *********************/
+
+.notifications h1 {
+    font-family: sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.notification {
+    background: white;
+    margin: 30px;
+    border-radius: 25px;
+    
+    background-color: white;
+    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    display: flex;
+    align-items: center;
+}
+.notification:hover {
+    background-color: white;
+    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77) inset;
+    cursor: pointer;
+}
+.notification-details h1 {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.notification-details p {
+    font-family: sans-serif;
+    font-size: 13px;
+}
+.notifications {
+    overflow: auto;
+}
+.notification-details {
+    width: 90%;
+}
+.notification-details h1 {
+    font-size: 15px;
+}
+.icon {
+    padding: 15px;
+    font-size: 30px;
+}

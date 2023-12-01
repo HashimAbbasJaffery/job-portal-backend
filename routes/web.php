@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MessageController;
 use App\Models\User;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get("/chats", [ChatController::class, "index"]);
+Route::get("/notifications", [NotificationController::class, "get"]);
 Route::post("/sendMessage", [MessageController::class, "store"]);
 
 Route::get("/createUser", function() {
@@ -33,7 +35,7 @@ Route::get("/createUser", function() {
         "name" => "hashim abbas",
         "last_name" => "jaffery",
         "address" => "shidfhsd",
-        "email" => "habbas2121@outlook.com",
+        "email" => "habbas21219@outlook.com",
         "password" => Hash::make("12345")
     ]);
 });
