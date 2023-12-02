@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "laravel-echo": "^1.15.3",
+        "lodash": "^4.17.21",
         "pusher-js": "^8.4.0-rc2"
     }
 }

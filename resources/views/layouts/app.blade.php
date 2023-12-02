@@ -7,8 +7,10 @@
         <link rel="stylesheet" href="/assets/style/reset.css">
         <link rel="stylesheet" href="/assets/style/style.css">
         <script src="https://kit.fontawesome.com/3a7e8b6e65.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
     </head>
-    <body>
+    <body style="position: relative;">
         <input type="hidden" id="user_id" value="{{ auth()->user()->id }}" />
         <div id="main">
             <div id="nav" class="side-navbar">
@@ -28,6 +30,14 @@
                                 <span style="display: inline-block; margin-left: 20px;">Notification</span>
                             </a>
                         </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa-solid fa-power-off"></i>
+                                <span style="display: inline-block; margin-left: 20px;">Log Out</span>
+                            </a>
+                        </li> 
                     </ul>
                 </nav>
             </div>

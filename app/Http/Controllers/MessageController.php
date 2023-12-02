@@ -16,7 +16,7 @@ class MessageController extends Controller
         $messages = Message::where("message_id", $key)->first();
         return [$messages, Auth::user()->id];
     }
-    protected function storeMessageNotification($reciever_id, $message) {
+    protected function storeMessageNotification($sender_id, $reciever_id, $message) {
         $notification = Notification::where("user_id", $reciever_id)->first();
         if(!$notification) {
             $notification = Notification::create([
@@ -36,6 +36,10 @@ class MessageController extends Controller
                 "isRead" => false
             ]
         ];
+        if($sender_id) {
+            $user = User::select("name")->find($sender_id);
+            $notifications[count($notifications) - 1]["sender_name"] = $user->name;
+        }
         $notification->update([
             "message" => json_encode($notifications),
             "isRead" => false
@@ -49,8 +53,8 @@ class MessageController extends Controller
         $key = request()->get("key");
         
         event(new DispatchMessage($message, $sender_id, $reciever_id));
-        event(new NotificationEvent($reciever_id, "The test"));
-        $this->storeMessageNotification($reciever_id, $message);
+        event(new NotificationEvent($sender_id, $reciever_id, $message));
+        $this->storeMessageNotification($sender_id, $reciever_id, $message);
 
         $sender = User::select("name")->find($sender_id);
 

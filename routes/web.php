@@ -35,7 +35,7 @@ Route::get("/createUser", function() {
         "name" => "hashim abbas",
         "last_name" => "jaffery",
         "address" => "shidfhsd",
-        "email" => "habbas21219@outlook.com",
+        "email" => "habbas21219@gmail.com",
         "password" => Hash::make("12345")
     ]);
 });

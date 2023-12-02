@@ -9,28 +9,21 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
 
-class NotificationEvent implements ShouldBroadcast
+class TypingEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
+    public $typer_id;
     public $reciever_id;
-    public $sender_id;
-    public $sender_name;
-    public $message;
-    public function __construct($sender_id = null, $reciever_id, $message)
+    public $typer_name;
+    public function __construct($typer_id, $reciever_id)
     {
+        $this->typer_id = $typer_id;
         $this->reciever_id = $reciever_id;
-        $this->message = $message;
-        if($sender_id) {
-            $user = User::select("name")->find($sender_id);
-            $this->sender_name = $user->name;
-        }
-        $this->sender_id = $sender_id;
     }
 
     /**
@@ -42,7 +35,8 @@ class NotificationEvent implements ShouldBroadcast
     {
         return [ "notification." . $this->reciever_id ];
     }
+
     public function broadcastAs() {
-        return "notification-event";
+        return "typing-event";
     }
 }

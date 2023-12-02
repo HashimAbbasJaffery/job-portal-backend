@@ -50,4 +50,5 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/assets/js/start-chat.js" type="module"></script>
 <script src="/assets/js/sendMessage.js" type="module"></script>
+<script src="/assets/js/typing.js" type="module"></script>
 </x-app-layout>

@@ -8,7 +8,7 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div class="notification-details">
-                                <h1>You have recieved message from xyz</h1>
+                                <h1>You have recieved message from {{ $unread_message?->sender_name ?? "xyz" }}</h1>
                                 <p>Message: <span style="font-style: italic; font-weight: bold;">{{ $unread_message->message }}</span></p>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import messageTemplate from "./messageTemplate.js";
 import pusher from "./pusherConfig.js";
-import { truncateString } from "./utils/helpers.js";
+import subscriptions from "./subscriptions.js";
 
 const contacts = document.querySelectorAll(".contact");
 contacts.forEach(contact => {
@@ -29,7 +29,13 @@ contacts.forEach(contact => {
   
         var channel = pusher.subscribe(channelName);
 
-        
+        if(subscriptions.length > 1) {
+            pusher.unsubscribe(subscriptions[1]);
+            subscriptions[1] = channelName;
+        } else {
+            subscriptions.push(channelName);
+        }
+        console.log(subscriptions)
 
         channel.bind('dispatch-message', function(data) {
             const recentMessage = document.querySelector(".active-contact .recent-messages");
@@ -41,7 +47,6 @@ contacts.forEach(contact => {
 
             if(parseInt(sender_id.value) !== data.sender_id) {
                 chatBox.innerHTML += messageTemplate("reciever", data.message, "testing");
-                recentMessage.textContent = truncateString(60, data.message);
             } 
             
             var myDiv = document.querySelector('.chat-box');
