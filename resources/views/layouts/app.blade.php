@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="/assets/style/style.css">
         <script src="https://kit.fontawesome.com/3a7e8b6e65.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-
+        @stack("styles")
     </head>
     <body style="position: relative;">
         <input type="hidden" id="user_id" value="{{ auth()->user()->id }}" />
@@ -16,16 +16,16 @@
             <div id="nav" class="side-navbar">
                 <h1>Techzeme.</h1>
                 <nav>
+                    <ul><li><a href="#"><i class="fa-solid fa-door-open"></i><span style="display: inline-block; margin-left: 20px;">{{ auth()->user()->name }}</span></a></li></ul>
                     <ul><li><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;">Users</span></a></li></ul>
                     <ul><li><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;">Tasks</span></a></li></ul>
                     <ul><li class="active"><a href="#"><i class="fa-solid fa-message"></i><span style="display: inline-block; margin-left: 20px;">Chats</span></a></li></ul>
                     <ul><li><a href="#"><i class="fa-solid fa-plus"></i><span style="display: inline-block; margin-left: 20px;">Assign Tasks</span></a></li></ul>
-                    <ul><li><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;">Tasks</span></a></li></ul>
                     <ul>
                         <li>
                             <a href="#" >
                                 <i class="fa-solid fa-bell" style="position: relative;">
-                                    <div class="{{ $notification_count ? "" : "none" }} notification-bell" style="width:9px; height: 9px; border-radius: 50px; background: #23c552; position: absolute; top: -4px; right: 0px;">&nbsp;</div>
+                                    <div class="{{ $notification_count ? '' : 'none' }} notification-bell" style="width:9px; height: 9px; border-radius: 50px; background: #23c552; position: absolute; top: -4px; right: 0px;">&nbsp;</div>
                                 </i>
                                 <span style="display: inline-block; margin-left: 20px;">Notification</span>
                             </a>
@@ -57,4 +57,5 @@
         // Call the function to scroll to the bottom (you can trigger this event based on your requirements)
         scrollToBottom();
     </script>
+    @stack("scripts")
 </html>

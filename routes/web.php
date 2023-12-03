@@ -6,7 +6,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MessageController;
 use App\Models\User;
 use App\Http\Controllers\NotificationController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,13 +30,20 @@ Route::get("/chats", [ChatController::class, "index"]);
 Route::get("/notifications", [NotificationController::class, "get"]);
 Route::post("/sendMessage", [MessageController::class, "store"]);
 
+
+// Users Route;
+Route::get("/users", [UserController::class, "get"]);
+Route::get("/users/create", [UserController::class, "create"]);
+Route::post("/users/create", [UserController::class, "store"]);
+
 Route::get("/createUser", function() {
     User::create([
         "name" => "hashim abbas",
         "last_name" => "jaffery",
         "address" => "shidfhsd",
         "email" => "habbas21219@gmail.com",
-        "password" => Hash::make("12345")
+        "password" => Hash::make("12345"),
+        "profile_id" => 1
     ]);
 });
 

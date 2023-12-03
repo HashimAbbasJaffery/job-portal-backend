@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -21,5 +22,7 @@ class DatabaseSeeder extends Seeder
             'address' => "xyz address",
             'email' => 'test@example.com',
         ]);
+
+        Profile::factory(1)->create();
     }
 }

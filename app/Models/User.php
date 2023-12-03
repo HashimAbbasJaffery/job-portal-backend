@@ -23,6 +23,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        "user_id"
     ];
 
     /**
@@ -52,5 +53,8 @@ class User extends Authenticatable
                 $query->where('user_id_2', $this->id)
                     ->orWhere('user_id_1', $this->id);
             });
+    }
+    public function Profile() {
+        return $this->belongsTo(Profile::class);
     }
 }

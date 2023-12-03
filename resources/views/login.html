@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techzeme.com | Login Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        background-color: #0f1233;
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+        background-image: url('img/bg.avif');
+        background-size: cover;
+        font-family: 'Montserrat', sans-serif;
+        /* align-items: center; */
+    }
+    /* #id{
+        height: 100%;
+        width: 100%;
+        
+        background-color: #0f1233;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } */
+    #container{
+        height: 400px;
+        width: 370px;
+        margin: 10px;
+        /* border: 0.5px solid white; */
+        border-radius: 20px;
+        padding: 20px;
+        background-color: rgba(101, 101, 101, 0.3);
+        backdrop-filter: blur(5px);
+        box-shadow: 0.5px 0.5px 10px rgba(255, 255, 255, 0.594);
+    }
+    #heading h1{
+        text-align: center;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+    }
+    input{
+        height: 30px;
+        width: 300px;
+        margin: 15px auto;
+        /* border-radius: 10px; */
+        background: none;
+        /* background-color: rgba(255, 255, 255, 0.2); */
+        border: none;
+        border-bottom: 1.5px solid white;
+        text-align: center;
+        padding: 5px;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(255, 255, 255);
+        font-size: 17px;
+        /* box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.33); */
+  
+    }
+    button{
+        height: 35px;
+        width: 150px;
+        margin: 20px auto;
+        /* border-radius: 10px; */
+        background-color: transparent;
+        /* background-color: rgba(255, 255, 255, 0.2); */
+        border: none;
+        /* border-left: 1px solid white;
+        border-right: 1px solid white; */
+        text-align: center;
+        padding: 5px;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    button:hover{
+        height: 35px;
+        width: 150px;
+        margin: 20px auto;
+        /* border-radius: 10px; */
+        background-color: transparent;
+        /* background-color: rgba(255, 255, 255, 0.2); */
+        border: none;
+        /* border-top: 1px solid white; */
+        border-bottom: 1px solid white;
+        text-align: center;
+        padding: 5px;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        cursor: pointer;
+        transition: 1s ease-in-out;
+
+    }
+    table tr{
+        text-align: center;
+    }
+
+</style>
+<body>
+    <div id="main">
+        <div id="container">
+            <div id="heading">
+                <h1>
+                    Login
+                </h1>
+            </div>
+            <table align="center">
+                <tr>
+                    <td> <input type="text" placeholder="Emp ID"> </td>
+                    
+                </tr>
+                <tr>
+                    
+                    <td> <input type="password" placeholder="Password"> </td>
+                </tr>
+                <tr>
+                    
+                    <td> <button>Login</button> </td>
+                </tr>
+                <tr>
+                    <td style="color: white;font-size: 12px;">Already have an Account?</td>
+                </tr>
+                <tr>
+                    <td><button>Register</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

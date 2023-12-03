@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Techzeme | Chat</title>
+        <link rel="stylesheet" href="style/reset.css">
+        <link rel="stylesheet" href="style/style.css">
+        <script src="https://kit.fontawesome.com/3a7e8b6e65.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="main">
+            <div id="nav" class="side-navbar">
+                <h1>Techzeme.</h1>
+                <nav>
+                    <ul><li><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;">Users</span></a></li></ul>
+                    <ul><li><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;">Tasks</span></a></li></ul>
+                    <ul><li class="active"><a href="#"><i class="fa-solid fa-message"></i><span style="display: inline-block; margin-left: 20px;">Chats</span></a></li></ul>
+                    <ul><li><a href="#"><i class="fa-solid fa-plus"></i><span style="display: inline-block; margin-left: 20px;">Assign Tasks</span></a></li></ul>
+                    <ul><li><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;">Tasks</span></a></li></ul>
+                </nav>
+            </div>
+            <div id="mainbod">
+                <div id="contacts" class="contacts">
+                    <h1 style="padding: 10px; margin-bottom: 10px; margin-top: 10px;">Contacts</h1>
+                    <div class="contact">
+                        <div class="contact-photo">
+                            <img src="https://placehold.co/50x50" />
+                        </div>
+                        <div class="contact-name chat-detail">
+                            
+                            <div >
+                                <h1>Hashim Abbas</h1>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, praesentium...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact">
+                        <div class="contact-photo">
+                            <img src="https://placehold.co/50x50" />
+                        </div>
+                        <div class="contact-name chat-detail">
+                            <h1>Hashim Abbas</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, praesentium...</p>
+                        </div>
+                    </div>
+                    <div class="contact">
+                        <div class="contact-photo">
+                            <img src="https://placehold.co/50x50" />
+                        </div>
+                        <div class="contact-name chat-detail">
+                            <h1>Hashim Abbas</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, praesentium...</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div id="chats">
+                    <div id="header" class="profile-details">
+                        <div class="profile-image">
+                            <img src="https://placehold.co/50x50" />
+                        </div>
+                        <div class="profile-detail">
+                            <h1>Hashim abbas</h1>
+                            <div class="online">Online <div class="online-status">&nbsp;</div></div>
+                        </div>
+                    </div>
+                    <div class="chat-box">
+                        <div class="message sender-msg">
+                            <div class="message-profile sender-profile">
+                                <img src="https://placehold.co/30x30" />
+                            </div>
+                            <div class="sender">
+                                <h1>Hashim Abbas</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam adipisci cum quam maiores at incidunt aliquid modi deserunt fugit possimus?</p>
+                            </div>
+                        </div>
+                        <div class="message reciever-msg">
+                            <div class="message-profile reciever-profile">
+                                <img src="https://placehold.co/30x30" />
+                            </div>
+                            <div class="sender">
+                                <h1>Hashim Abbas</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam adipisci cum quam maiores at incidunt aliquid modi deserunt fugit possimus?</p>
+                            </div>
+                        </div>
+                        <div class="message sender-msg">
+                            <div class="message-profile sender-profile">
+                                <img src="https://placehold.co/30x30" />
+                            </div>
+                            <div class="sender">
+                                <h1>Hashim Abbas</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam adipisci cum quam maiores at incidunt aliquid modi deserunt fugit possimus?</p>
+                            </div>
+                        </div>
+                        <div class="message reciever-msg">
+                            <div class="message-profile reciever-profile">
+                                <img src="https://placehold.co/30x30" />
+                            </div>
+                            <div class="sender">
+                                <h1>Hashim Abbas</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam adipisci cum quam maiores at incidunt aliquid modi deserunt fugit possimus?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sendmsg">
+                        <form action="">
+                        <input type="text" placeholder="Send Message...">
+                        <button><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+          function scrollToBottom() {
+            var myDiv = document.querySelector('.chat-box');
+            myDiv.scrollTop = myDiv.scrollHeight;
+        }
+
+        // Call the function to scroll to the bottom (you can trigger this event based on your requirements)
+        scrollToBottom();
+    </script>
+</html>
