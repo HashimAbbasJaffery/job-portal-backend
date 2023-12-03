@@ -312,6 +312,16 @@ form{
 
 /************************* USER PAGE ***************************/
 
+.empty-field {
+    border: 1px solid red !important;
+}
+.none {
+    display: none;
+}
+.err::placeholder {
+    color: red !important;
+    opacity: 0.5;
+}
 #user-table {
     margin: 20px;
     border-radius: 25px;

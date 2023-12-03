@@ -11,7 +11,7 @@
           <input type="text" placeholder="Search Users..."/>
           <button type="button" class="btn btn-dark">Create User</button>
         </div>
-        <button type="button" class="btn btn-dark">Create User</button>
+        <button type="submit" class="btn btn-dark create_user">Create User</button>
       </div>
       <table class="table table-striped">
         <thead>
@@ -28,7 +28,7 @@
           @foreach($users as $user)
           <tr>
             <th scope="row">{{ $user->name }}</th>
-            <td>{{ $user->email }}</td>
+            <td>{{ $user->email ? $user->email : "Profile Not completed yet!"}}</td>
             <td><span class="badge badge-pill badge-primary" style="background-color: {{ $user->profile->role->badge_color }};">{{ $user->profile->role->name }}</span></td>
             <td>{{ $user->profile->tasks_assigned }} Tasks</td>
             <td>{{ $user->profile->salary }}</td>
@@ -55,4 +55,10 @@
   </div>
 </div>
 </div>
+<script>
+  const create_user = document.querySelector(".create_user");
+  create_user.addEventListener("click", function() {
+    window.location.href = "/users/create";
+  })
+</script>
 </x-app-layout>

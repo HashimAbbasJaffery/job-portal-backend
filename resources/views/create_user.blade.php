@@ -8,36 +8,37 @@
             <h1>Create User</h1>
             <form id="createUser" class="createUser">
                 <div class="create-user" style="margin-top: 20px;">
-                    <label for="select_role" style="width: 100%;">
+                    <label for="role" style="width: 100%; position: relative;">
                         <p>Select Role</p>
-                        <select id="select_role" class="form-control create-user-field">
+                        <select id="role" class="form-control create-user-field">
                             <option value="">Select Role</option>
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
                         </select>
+                        
                     </label>
                     <label for="name" class="create-user-field">
                         <p>Name</p>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                        <div class="form-group" style="position: relative;">
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" aria-describedby="emailHelp">
                         </div>
                     </label>
                     <label for="last_name" class="create-user-field">
                         <p>last name</p>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="last_name" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" placeholder="Enter last name" id="last_name" aria-describedby="emailHelp">
                         </div>
                     </label>
                     <label for="salary" class="create-user-field">
                         <p>Salary</p>
                         <div class="form-group">
-                            <input type="number" class="form-control" id="salary" aria-describedby="emailHelp">
+                            <input type="number" class="form-control" placeholder="Enter salary" id="salary" aria-describedby="emailHelp">
                         </div>
                     </label>
 
                     <button type="submit" class="btn btn-dark mb-2">Create User</button>
-                    <button type="submit" class="btn btn-primary mb-2">Cancel</button>
+                    <button type="submit" class="btn btn-primary mb-2 cancel">Cancel</button>
                 </div>
             </form>
         </div>
@@ -63,7 +64,7 @@
             const form = document.getElementById("createUser");
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
-                const role = getElementValue("select_role");
+                const role = getElementValue("role");
                 const name = getElementValue("name");
                 const last_name = getElementValue("last_name");
                 const salary = getElementValue("salary");
@@ -75,7 +76,25 @@
                     salary
                 })
                 .then(res => {
-                    console.log(res);
+                    const errors = res.data.errors;
+                    if(errors) {
+                        const fields = [ "role", "name", "last_name", "salary" ];
+                        fields.forEach(field => {
+                            const element = document.getElementById(field);
+                            element.classList.remove("empty-field");
+                            element.classList.remove("err");
+                            element.setAttribute("placeholder", "Enter " + field.replace(/[-!@#$%^&*())_-]/g, " "));
+                        });
+                        for(let error in errors) {
+                            const field = error;
+                            const element = document.getElementById(field);
+                            element.classList.add("empty-field");
+                            element.classList.add("err");
+                            element.setAttribute("placeholder", errors[error]);
+                        }
+                    } else {
+                        window.location.href = "/users"
+                    }
                 })
                 .catch(err => {
                     console.log(err);
@@ -83,6 +102,12 @@
 
             })
 
+        </script>
+        <script>
+            const cancelButton = document.querySelector(".cancel");
+            cancelButton.addEventListener("click", function() {
+                window.location.href = "/users";
+            })
         </script>
     @endpush
 </x-app-layout>
