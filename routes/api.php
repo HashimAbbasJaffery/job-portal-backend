@@ -26,6 +26,9 @@ Route::get("/users/get", function() {
         $keyword = "";
     }
     $users = User::where("name", "like", "%" . $keyword . "%")->paginate(5);
+    if($keyword) {
+        $users->appends([ "keyword" => $keyword ]);
+    }
     return $users;
 });
 

@@ -59,4 +59,49 @@ class UserController extends Controller
 
         return 1;
     }
+    public function edit(User $user) {
+        $role = (int)request()->get("role");
+        $name = request()->get("name");
+        $last_name = request()->get("last_name");
+        $salary = request()->get("salary");
+
+        // Validating the incoming inputs
+
+        $validator = Validator::make(request()->all(), [
+            "role" => "required",
+            "name" => "required|min:4|max:20",
+            "last_name" => "required|min:4|max:20",
+            "salary" => "required|numeric"
+        ]);
+
+        // If Validating fails 
+
+        if($validator->fails()) {
+            return response()->json(["errors" => $validator->errors()]);
+        }
+
+        // Updating the profile of the user
+        $profile = Profile::find($user->profile_id);
+        $profile = $profile->update([
+            "salary" => $salary,
+            "role_id" => $role
+        ]);
+
+
+        // creating user and attaching that to the specific profile
+        $user->update([
+            "name" => $name,
+            "last_name" => $last_name,
+        ]);
+
+        return 1;
+    }
+    public function update(User $user) {
+        $roles = Role::all();
+        return view("update_user", compact("user", "roles"));
+    }
+    public function destroy(User $user) {
+        $user->delete();
+        return 1;
+    }
 }

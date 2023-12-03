@@ -26,15 +26,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get("/chats", [ChatController::class, "index"]);
-Route::get("/notifications", [NotificationController::class, "get"]);
+Route::get("/chats", [ChatController::class, "index"])->name("chats");
+Route::get("/notifications", [NotificationController::class, "get"])->name("notifications");
 Route::post("/sendMessage", [MessageController::class, "store"]);
 
 
 // Users Route;
-Route::get("/users", [UserController::class, "get"]);
+Route::get("/users", [UserController::class, "get"])->name("users");
 Route::get("/users/create", [UserController::class, "create"]);
 Route::post("/users/create", [UserController::class, "store"]);
+Route::get("/user/{user:id}/update", [UserController::class, "update"]);
+Route::post("/user/{user:id}/edit", [UserController::class, "edit"]);
+Route::delete("/user/{user:id}/delete", [UserController::class, "destroy"]);
 
 Route::get("/createUser", function() {
     User::create([

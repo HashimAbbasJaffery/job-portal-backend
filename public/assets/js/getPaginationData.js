@@ -11,7 +11,8 @@ const userTableRow = (
     badge_color,
     role,
     tasks_assigned,
-    salary
+    salary,
+    id
 ) => {
     return `
     <tr>
@@ -21,8 +22,10 @@ const userTableRow = (
     <td>${tasks_assigned} Tasks</td>
     <td>${salary}</td>
     <td>
-      <button type="button" class="btn btn-outline-primary">Update</button>
-      <button type="button" class="btn btn-outline-danger">Delete</button>
+    <a href="/user/${id}/update"
+    class="btn btn-outline-primary text-primary update_button">Update</a>
+
+    <button type="button" onclick="deleteRecord(${id})" class="btn btn-outline-danger">Delete</button>
       <button type="button" class="btn btn-outline-warning">Notify</button>
     </td>
   </tr>
@@ -34,7 +37,6 @@ const getPaginationData = (link) => {
         .then((res) => {
             const table = document.querySelector(".user_table");
             const data = res.data.data;
-            console.log(data);
 
             let rowMarkup = "";
             data.forEach((datum) => {
@@ -44,7 +46,8 @@ const getPaginationData = (link) => {
                     datum.profile.role.badge_color,
                     datum.profile.role.name,
                     datum.profile.tasks_assigned,
-                    datum.profile.salary
+                    datum.profile.salary,
+                    datum.id
                 );
             });
 

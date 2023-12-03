@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="/assets/style/style.css">
         <script src="https://kit.fontawesome.com/3a7e8b6e65.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @stack("styles")
     </head>
     <body style="position: relative;">
@@ -15,14 +16,14 @@
         <div id="main">
             <div id="nav" class="side-navbar">
                 <h1>Techzeme.</h1>
+                <p style="text-align: center; background: whitesmoke; padding: 10px;">Hashim Abbas</p>
                 <nav>
-                    <ul><li><a href="#"><i class="fa-solid fa-door-open"></i><span style="display: inline-block; margin-left: 20px;">{{ auth()->user()->name }}</span></a></li></ul>
-                    <ul><li><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;">Users</span></a></li></ul>
-                    <ul><li><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;">Tasks</span></a></li></ul>
-                    <ul><li class="active"><a href="#"><i class="fa-solid fa-message"></i><span style="display: inline-block; margin-left: 20px;">Chats</span></a></li></ul>
-                    <ul><li><a href="#"><i class="fa-solid fa-plus"></i><span style="display: inline-block; margin-left: 20px;">Assign Tasks</span></a></li></ul>
+                    <ul><li class="{{ request()->routeIs("users") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;">Users</span></a></li></ul>
+                    <ul><li class="{{ request()->routeIs("tasks") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;">Tasks</span></a></li></ul>
+                    <ul><li class="{{ request()->routeIs("chats") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-message"></i><span style="display: inline-block; margin-left: 20px;">Chats</span></a></li></ul>
+                    <ul><li class="{{ request()->routeIs("assign_task") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-plus"></i><span style="display: inline-block; margin-left: 20px;">Assign Tasks</span></a></li></ul>
                     <ul>
-                        <li>
+                        <li class="{{ request()->routeIs("notifications") ? "active" : "" }}">
                             <a href="#" >
                                 <i class="fa-solid fa-bell" style="position: relative;">
                                     <div class="{{ $notification_count ? '' : 'none' }} notification-bell" style="width:9px; height: 9px; border-radius: 50px; background: #23c552; position: absolute; top: -4px; right: 0px;">&nbsp;</div>
