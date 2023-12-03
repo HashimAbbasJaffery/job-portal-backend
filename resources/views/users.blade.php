@@ -8,8 +8,10 @@
     <div class="users-list">
       <div class="users-list-header">
         <div class="search search-user">
-          <input type="text" placeholder="Search Users..."/>
-          <button type="button" class="btn btn-dark">Create User</button>
+          <form id="search-users">
+            <input type="text" id="search" placeholder="Search Users..."/>
+            <button type="submit" class="btn btn-dark">Create User</button>
+          </form>
         </div>
         <button type="submit" class="btn btn-dark create_user">Create User</button>
       </div>
@@ -24,7 +26,7 @@
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="user_table">
           @foreach($users as $user)
           <tr>
             <th scope="row">{{ $user->name }}</th>
@@ -41,7 +43,6 @@
           @endforeach
         </tbody>
       </table>
-      {{ $users->links() }}
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -55,10 +56,23 @@
   </div>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/assets/js/getPaginationData.js"></script>
+<script src="/assets/js/getUsers.js" type="module"></script>
 <script>
   const create_user = document.querySelector(".create_user");
   create_user.addEventListener("click", function() {
     window.location.href = "/users/create";
   })
+</script>
+<script>
+
+
+  const searchForm = document.getElementById("search-users");
+  searchForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Submitted");
+  }) 
+
 </script>
 </x-app-layout>

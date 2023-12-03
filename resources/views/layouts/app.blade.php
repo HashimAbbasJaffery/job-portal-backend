@@ -32,8 +32,8 @@
                         </li>
                     </ul>
                     <ul>
-                        <li>
-                            <a href="#">
+                        <li class="logout">
+                            <a>
                                 <i class="fa-solid fa-power-off"></i>
                                 <span style="display: inline-block; margin-left: 20px;">Log Out</span>
                             </a>
@@ -56,6 +56,22 @@
 
         // Call the function to scroll to the bottom (you can trigger this event based on your requirements)
         scrollToBottom();
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        const logout = document.querySelector(".logout");
+        logout.addEventListener("click", function() {
+            axios.post("/logout")
+                .then(res => {
+                    window.location.href = "/login"
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }) 
+
     </script>
     @stack("scripts")
 </html>

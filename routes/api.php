@@ -4,6 +4,7 @@ use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserOnlineController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,15 @@ use App\Http\Controllers\UserOnlineController;
 
 
 Route::middleware('auth:api')->put('user/{user}/online', UserOnlineController::class);
+
+Route::get("/users/get", function() {
+    $keyword = request()->get("keyword");
+    if(!$keyword) {
+        $keyword = "";
+    }
+    $users = User::where("name", "like", "%" . $keyword . "%")->paginate(5);
+    return $users;
+});
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
