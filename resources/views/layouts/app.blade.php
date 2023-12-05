@@ -16,13 +16,13 @@
         <div id="main">
             <div id="nav" class="side-navbar">
                 <h1>Techzeme.</h1>
-                <p style="text-align: center; background: whitesmoke; padding: 10px;">Hashim Abbas</p>
+                <p style="text-align: center; background: whitesmoke; padding: 10px; font-family: sans-serif">Welcome, {{ auth()->user()->name }}</p>
                 <nav>
-                    <ul><li class="{{ request()->routeIs("users") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;">Users</span></a></li></ul>
+                    <ul onclick="redirect('/users')"><li class="{{ request()->routeIs("users") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;">Users</span></a></li></ul>
                     <ul><li class="{{ request()->routeIs("tasks") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;">Tasks</span></a></li></ul>
-                    <ul><li class="{{ request()->routeIs("chats") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-message"></i><span style="display: inline-block; margin-left: 20px;">Chats</span></a></li></ul>
+                    <ul onclick="redirect('/chats')"><li class="{{ request()->routeIs("chats") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-message"></i><span style="display: inline-block; margin-left: 20px;">Chats</span></a></li></ul>
                     <ul><li class="{{ request()->routeIs("assign_task") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-plus"></i><span style="display: inline-block; margin-left: 20px;">Assign Tasks</span></a></li></ul>
-                    <ul>
+                    <ul onclick="redirect('notifications')">
                         <li class="{{ request()->routeIs("notifications") ? "active" : "" }}">
                             <a href="#" >
                                 <i class="fa-solid fa-bell" style="position: relative;">
@@ -60,6 +60,11 @@
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const redirect = href => {
+            window.location.href = href; 
+        }
+    </script>
     <script>
 
         const logout = document.querySelector(".logout");

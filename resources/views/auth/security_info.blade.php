@@ -23,22 +23,36 @@
                     </div> -->
         </header>
         <section id="content">
-          <form method="POST" action="{{ route('check_uuid') }}">
+          <form method="POST" action="{{ route('store_security_info') }}">
             @csrf
 
          
             <div class="mb-4">
               <label class="block text-gray-700 font-bold mb-2" for="address">
-                Registration Code
+                Password
               </label>
                <input
                 class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="registration_code"
-                name="registration_code"
-                type="text"
-                style="{{ ($errors->get('registration_code'))? 'border: 1px solid red' : "" }}"
+                id="password"
+                name="password"
+                type="password"
+                style="{{ ($errors->get('password'))? 'border: 1px solid red' : "" }}"
               />
-              <x-input-error :messages="$errors->get('registration_code')" class="mt-2" />
+              <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2" for="address">
+                Confirm Password
+              </label>
+               <input
+                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="password_confirmation"
+                name="password_confirmation"
+                type="password"
+                style="{{ ($errors->get('password'))? 'border: 1px solid red' : "" }}"
+              >
+              <x-input-error :messages="$errors->get('confirm_password')" class="mt-2" />
         
             </div>
             <div class="flex items-center justify-between">
@@ -48,7 +62,7 @@
                 class="text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
               >
-                Next 
+                Register 
               </button>
             </div>
           </form>

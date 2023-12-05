@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     @empty 
-                        <div class="alert aler-danger">
+                        <div class="empty">
                             <p>No contacts found in the list</p>
                         </div>
                     @endforelse

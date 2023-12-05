@@ -7,20 +7,18 @@
   --secondary-font: "Poppins", sans-serif;
 }
 body {
-  background-color: var(--base);
+  background: whitesmoke;
   color: var(--base);
   font-family: var(--primary-font);
 }
 .login {
   width: 30%;
-  background-color: var(--secondary);
   margin: 0 auto;
   padding: 50px;
-  border: 2px solid var(--secondary);
-  border-radius: 50px;
-  -webkit-box-shadow: 0px 0px 49px 1px rgba(185, 212, 51, 0.59);
-  -moz-box-shadow: 0px 0px 49px 1px rgba(185, 212, 51, 0.59);
-  box-shadow: 0px 0px 49px 1px rgba(185, 212, 51, 0.59);
+  
+  border-radius: 25px;
+  background-color: white;
+  box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77) inset;
 }
 #wrapper {
   display: flex;
@@ -44,7 +42,6 @@ body {
   background: var(--baseShade);
 }
 #content input, #content textarea {
-  background: var(--secondary);
   border: 1px solid black;
   color: black;
 }

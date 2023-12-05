@@ -6,6 +6,7 @@ use App\Models\Profile;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -47,14 +48,30 @@ class UserController extends Controller
             "role_id" => $role
         ]);
 
-
+        $code = (string)str()->uuid();
         // creating user and attaching that to the specific profile
-        User::create([
+        $user = User::create([
             "name" => $name,
             "last_name" => $last_name,
             "address" => "",
             "profile_id" => $profile->id,
-            "password" => ""
+            "password" => "",
+            "registration_code" => $code
+        ]);
+
+        // Making the chats between user being created and the one who is creating it
+        $message_id = (string)str()->uuid();
+        $relationship = DB::table("contact_relationship")->insert([
+            "user_id_1" => $user->id,
+            "user_id_2" => auth()->user()->id,
+            "message_id" => $message_id
+        ]);
+
+        // Establishing the chat between two users
+
+        $chats = DB::table("chat_messages")->insert([
+            "message_id" => $message_id,
+            "messages" => "[]"
         ]);
 
         return 1;
@@ -89,9 +106,11 @@ class UserController extends Controller
 
 
         // creating user and attaching that to the specific profile
+        $uuid = (string)str()->uuid();
         $user->update([
             "name" => $name,
             "last_name" => $last_name,
+            "registration_code" => $uuid
         ]);
 
         return 1;

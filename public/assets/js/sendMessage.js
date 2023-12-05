@@ -6,6 +6,7 @@ form.addEventListener("submit", function(e) {
     e.preventDefault();
     const chatbox = document.querySelector(".chat-box");
     const message = document.querySelector(".messageContent");
+    if(!message.value) return;
     const activeContact = document.querySelector(".active-contact");
     const key = activeContact.dataset.key;
 

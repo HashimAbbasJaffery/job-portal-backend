@@ -23,22 +23,36 @@
                     </div> -->
         </header>
         <section id="content">
-          <form method="POST" action="{{ route('check_uuid') }}">
+          <form method="POST" action="{{ route('store_personal_info') }}">
             @csrf
 
          
             <div class="mb-4">
               <label class="block text-gray-700 font-bold mb-2" for="address">
-                Registration Code
+                Email
               </label>
                <input
                 class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="registration_code"
-                name="registration_code"
-                type="text"
-                style="{{ ($errors->get('registration_code'))? 'border: 1px solid red' : "" }}"
+                id="email"
+                name="email"
+                type="email"
+                style="{{ ($errors->get('email'))? 'border: 1px solid red' : "" }}"
               />
-              <x-input-error :messages="$errors->get('registration_code')" class="mt-2" />
+              <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2" for="address">
+                address
+              </label>
+               <textarea
+                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="address"
+                name="address"
+                type="address"
+                style="{{ ($errors->get('address'))? 'border: 1px solid red' : "" }}"
+              ></textarea>
+              <x-input-error :messages="$errors->get('address')" class="mt-2" />
         
             </div>
             <div class="flex items-center justify-between">

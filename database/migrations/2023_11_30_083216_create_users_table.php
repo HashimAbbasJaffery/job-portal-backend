@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status')->default('online');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string("registration_code")->nullable();
             $table->foreignId("profile_id")->constrained("profile")->cascadeOnDelete()->default(1);
             $table->rememberToken();
             $table->timestamps();

@@ -13,7 +13,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="alert alert-danger">No Notifications Found!</div>
+                        <div class="alert alert-danger empty">No Notifications Found!</div>
                     @endforelse
                 </div>
             </div>

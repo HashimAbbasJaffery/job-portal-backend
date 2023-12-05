@@ -137,7 +137,7 @@ form{
     background-color: white;
     box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
     margin: 15px;
-    height: 74vh;
+    height: 64vh;
 }
 .chat-box::-webkit-scrollbar-thumb {
     background-color: #a0a0a0; /* Set the color of the scrollbar thumb */
@@ -408,8 +408,7 @@ form{
 .create-user button[type="submit"] {
     margin-top: 10px;
 }
-.create-user label:not(.create-user :last-child) {
-    border-bottom: 1px solid rgba(0,0,0, 0.2); 
+.create-user label:not(.create-user :last-child) { 
     padding-bottom: 10px;
 }
 .disabled-link {
@@ -420,4 +419,13 @@ form{
 .active-page {
     background: #343a40 !important;
     color: white !important;
+}
+
+
+.empty {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: sans-serif;
 }
