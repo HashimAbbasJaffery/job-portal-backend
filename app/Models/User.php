@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $with = "profile";
+    protected $with = ["profile", "tasks"];
     protected $fillable = [
         'name',
         'address',
@@ -58,5 +58,8 @@ class User extends Authenticatable
     }
     public function Profile() {
         return $this->belongsTo(Profile::class);
+    }
+    public function tasks() {
+        return $this->hasMany(Task::class);
     }
 }

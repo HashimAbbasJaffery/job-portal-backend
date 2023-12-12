@@ -9,11 +9,12 @@ form.addEventListener("submit", function(e) {
     if(!message.value) return;
     const activeContact = document.querySelector(".active-contact");
     const key = activeContact.dataset.key;
+    const dp = document.getElementById("user_dp");
 
     let recentMessage = document.querySelector(".active-contact .recent-messages");
     const string = `${username.value}: ${message.value}`;
     recentMessage.textContent = truncateString(60, string);
-    chatbox.innerHTML += messageTemplate("sender", message.value, username.value);
+    chatbox.innerHTML += messageTemplate("sender", message.value, username.value, dp.value);
     const lastMessage = message.value;
     message.value = "";
 

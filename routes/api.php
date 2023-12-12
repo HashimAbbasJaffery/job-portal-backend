@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserOnlineController;
 use App\Models\User;
+use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,18 @@ Route::get("/users/get", function() {
         $users->appends([ "keyword" => $keyword ]);
     }
     return $users;
+});
+
+Route::get("/roles/get", function() {
+    $keyword = request()->get("keyword");
+    if(!$keyword) {
+        $keyword = "";
+    }
+    $roles = Role::where("name", "like", "%" . $keyword . "%")->paginate(5);
+    if($keyword) {
+        $roles->appends([ "keyword" => $keyword ]);
+    }
+    return $roles;
 });
 
 

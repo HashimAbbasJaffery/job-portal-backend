@@ -12,8 +12,8 @@ document.addEventListener('mousemove', (e) => {
     const deltaY = cursorY - divCenterY;
 
     // Adjust the transformation of the div based on cursor position
-    const moveX = deltaX * 0.01;
-    const moveY = deltaY * 0.01;
+    const moveX = deltaX * 0.025;
+    const moveY = deltaY * 0.025;
 
     movingDiv.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });

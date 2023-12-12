@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    
+        <link rel="icon" type="image/x-icon" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/reset.css">
     <link rel="stylesheet" href="/assets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,17 +24,17 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2" for="email">
+                        {{-- <label class="block text-gray-700 font-bold mb-2" for="email">
                         Email
-                        </label>
+                        </label> --}}
                         <input style="{{ ($errors->get('email'))? 'border: 1px solid red' : "" }}" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email">
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
                     <div class="mb-6">
-                        <label class="block text-gray-700 font-bold mb-2" for="password">
+                        {{-- <label class="block text-gray-700 font-bold mb-2" for="password">
                           Password
-                        </label>
-                        <input style="{{ ($errors->get('password'))? 'border: 1px solid red' : "" }}" name="password" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password">
+                        </label> --}}
+                        <input style="{{ ($errors->get('password'))? 'border: 1px solid red' : "" }}" name="password" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password">
                         <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                       </div>
@@ -45,7 +47,7 @@
                                 Forgot Password?
                             </a>
                         @endif --}}
-                        <a href="{{ route('register') }}" class="inline-block align-baseline font-bold hover:text-blue-800">
+                        <a href="{{ route('register') }}" class="register inline-block align-baseline font-bold ">
                             Sign up
                         </a>
                       </div>

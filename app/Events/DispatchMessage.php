@@ -9,6 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\User;
 
 class DispatchMessage implements ShouldBroadcast
 {
@@ -20,11 +21,22 @@ class DispatchMessage implements ShouldBroadcast
     public $message;
     public $sender_id;
     public $reciever_id;
-    public function __construct($message, $sender_id, $reciever_id)
+    public $profile_pic;
+    public $type;
+    public $deadline;
+    public $task_id;
+    public $name;
+    public function __construct($message, $sender_id, $reciever_id, $type = "message", $deadline = null, $task_id = null)
     {
         $this->message = $message;
         $this->sender_id = $sender_id;
         $this->reciever_id = $reciever_id;
+        $user = User::find($sender_id);
+        $this->name = $user->name;
+        $this->profile_pic = $user->profile->profile_picture;
+        $this->type = $type;
+        $this->deadline = $deadline;
+        $this->task_id = $task_id;
     }
 
     /**

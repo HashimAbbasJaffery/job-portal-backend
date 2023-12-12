@@ -34,14 +34,14 @@
                                 <td><span class="badge badge-pill badge-primary"
                                         style="background-color: {{ $user->profile->role->badge_color }};">{{ $user->profile->role->name }}</span>
                                 </td>
-                                <td>{{ $user->profile->tasks_assigned }} Tasks</td>
+                                <td>{{ count($user->tasks) }} Tasks</td>
                                 <td>{{ $user->profile->salary }}</td>
                                 <td>
                                     <a href="/user/{{ $user->id }}/update"
                                         class="btn btn-outline-primary text-primary update_button">Update</a>
                                     <button type="button" class="btn btn-outline-danger delete_button"
                                         data-id="{{ $user->id }}">Delete</button>
-                                    <button type="button" class="btn btn-outline-warning">Notify</button>
+                                    <a href="/task/{{ $user->id }}/create" class="btn btn-outline-warning">Assign Task</a>
                                 </td>
                             </tr>
                         @endforeach

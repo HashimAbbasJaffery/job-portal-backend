@@ -22,7 +22,8 @@ class NotificationEvent implements ShouldBroadcast
     public $sender_id;
     public $sender_name;
     public $message;
-    public function __construct($sender_id = null, $reciever_id, $message)
+    public $type;
+    public function __construct($sender_id = null, $reciever_id, $message, $type = "message")
     {
         $this->reciever_id = $reciever_id;
         $this->message = $message;
@@ -31,6 +32,7 @@ class NotificationEvent implements ShouldBroadcast
             $this->sender_name = $user->name;
         }
         $this->sender_id = $sender_id;
+        $this->type = $type;
     }
 
     /**

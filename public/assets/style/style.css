@@ -1,5 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@300;500;700&display=swap");
+* {
+}
 body {
     /* background-color: #d4ff00; */
+    background-image: url("/assets/img/bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    
+    font-family: "Montserrat", sans-serif;
 }
 #main {
     height: 100vh;
@@ -7,24 +15,33 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    }
+.fa-solid {
+    color: #42df6d;
+    font-size: 22px;
+    margin: 6px 0px;
 }
 #nav {
     height: 95vh;
-    width: 12%;
+    width: 5%;
+    color: #42df6d;
     /* border: 1px solid black; */
     border-radius: 25px;
-    background-color: white;
-    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    background-color: none;
+    /* box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77); */
+}
+#mainbod h1 {
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
 }
 #mainbod {
     height: 95vh;
-    width: 85%;
-    display: flex;
-    justify-content: space-around;
+    width: 88%;
+    backdrop-filter: blur(15px);
+    color: #42df6d;
     /* border: 1px solid black; */
-    background-color: whitesmoke;
-    border-radius: 25px;
-    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    border-radius: 10px;
+    /* box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77); */
 }
 
 #chats #header {
@@ -33,7 +50,7 @@ body {
     backdrop-filter: blur(7px);
     /* background-color: #111433; */
     
-    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    /* box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77); */
     /* box-shadow: 0px 0.5px 10px rgb(77, 77, 77) inset; */
     /* border: 0.5px solid white; */
     border-radius: 18px;
@@ -49,7 +66,7 @@ body {
     backdrop-filter: blur(7px);
     /* background-color: #111433; */
     
-    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    /* box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77); */
     /* box-shadow: 0px 0.5px 10px rgb(77, 77, 77) inset; */
     /* border: 0.5px solid white; */
     border-radius: 18px;
@@ -63,9 +80,13 @@ body {
     width: 30%;
     /* border: 1px solid black; */
     border-radius: 25px;
-    background-color: #111433;
+    
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(23, 23, 23, 0.364) !important;
     /* box-shadow: 0.5px 0.5px 10px rgb(77, 77, 77); */
     margin: 15px;
+    box-shadow: none !important;
+
 
 }
 
@@ -74,14 +95,16 @@ body {
     width: 70%;
     /* border: 1px solid black; */
     border-radius: 25px;
-    background-color: white;
     /* border: 1px solid #111433; */
-    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    /* box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77); */
     margin: 15px;
+    
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(23, 23, 23, 0.364) !important;
 
 }
 #chats #sendmsg input{
-    width: 75%;
+    width: 85%;
     vertical-align: middle;
     /* background-color: rgba(0, 0, 0, 0.3); */
     /* backdrop-filter: blur(7px); */
@@ -103,8 +126,8 @@ body {
     background: none;
 }
 #chats #sendmsg button{
-    height: 45px;
-    width: 20%;
+    height: 35px;
+    width: 10%;
     vertical-align: middle;
     /* background-color: rgba(0, 0, 0, 0.3); */
     /* backdrop-filter: blur(7px); */
@@ -135,9 +158,12 @@ form{
 .chat-box {
     border-radius: 25px;
     background-color: white;
-    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    /* box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77); */
     margin: 15px;
-    height: 64vh;
+    height: 60vh;
+    
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(23, 23, 23, 0.364) !important;
 }
 .chat-box::-webkit-scrollbar-thumb {
     background-color: #a0a0a0; /* Set the color of the scrollbar thumb */
@@ -171,7 +197,26 @@ form{
     box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
     width: 50%;
     margin-right: 10px;
-    padding: 5px;
+    padding: 10px;
+    
+    
+}
+.sender {
+    color: #111433;
+}
+.sender h1 {
+    font-size: 17px !important;
+    text-transform: capitalize;
+}
+.chat-link {
+    background-color: #111433 !important;
+}
+.reciever-msg .sender {
+    background:linear-gradient(90deg , #4aff7b , #2dd85b) !important;
+}
+.sender-msg .sender {
+    
+    background:linear-gradient(90deg , #4aff7b , #33f767) !important;
 }
 .reciever {
     
@@ -205,6 +250,7 @@ form{
     margin: 0px;
     font-size: 15px;
     font-family: sans-serif;
+    text-transform: capitalize;
     margin-bottom: 5px;
 }
 .profile-image img{
@@ -228,10 +274,12 @@ form{
 }
 .contact {
     margin: 00px 10px 10px 10px;
-    background: white;
+    color: #111433;
     border-radius: 10px;
     display: flex;
-    padding: 10px;
+    padding: 6px;
+    
+    background:linear-gradient(90deg , #4aff7b , #1d8338) !important;
 }
 #contacts {
     overflow-y: auto;
@@ -276,6 +324,11 @@ form{
     font-size: 20px;
     font-family: sans-serif;
 }
+.contact  h1 {
+    font-size: 25px !important;
+    font-family: sans-serif;
+    text-transform: capitalize;
+}
 .side-navbar ul li a{
     color: black;
     text-decoration: none;
@@ -294,15 +347,27 @@ form{
     padding-left: 10px;
     font-family: sans-serif;
     font-size: 15px;
-    padding: 15px 0px 15px 0px;
-    padding-left: 20px;
+    padding: 10px 0px 10px 0px;
+    /* padding-left: 20px; */
     margin-bottom: 10px;
+    text-align: center;
+    transition: 0.5s ease;
+
 }
 .side-navbar ul li:hover {
-    background-color: whitesmoke;
+    /* border-left: 3px solid #42df6d;   */
+    transform: translateX(10px);
+    transition: 0.5s ease;
 }
 .active {
-    background-color: whitesmoke;
+    background-color: none;
+    border-left: 4px solid #42df6d;  
+    margin: 0px;
+    padding: 0px; 
+    text-align: center;
+}
+.active:hover {     
+    background: none;
 }
 .none {
     display: none;
@@ -352,20 +417,25 @@ form{
 /********************* NOTIFICATIONS *********************/
 
 .notifications h1 {
-    font-family: sans-serif;
-    font-size: 25px;
+    font-family: "Montserrat" , sans-serif;
+    font-size: 15px;
     font-weight: bold;
 }
 
 .notification {
     background: white;
     margin: 30px;
-    border-radius: 25px;
-    
-    background-color: white;
-    box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77);
+    border-radius: 10px;
+    padding: 5px;
+    color: #111433;
+    background:linear-gradient(90deg , #4aff7b , #1d8338) !important;
+    /* background-color: white; */
+    /* box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77); */
     display: flex;
     align-items: center;
+}
+.envelope-icon {
+    color: #111433;
 }
 .notification:hover {
     background-color: white;
@@ -373,13 +443,13 @@ form{
     cursor: pointer;
 }
 .notification-details h1 {
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     padding-bottom: 5px;
     margin-bottom: 5px;
 }
 .notification-details p {
-    font-family: sans-serif;
-    font-size: 13px;
+    font-family: "Montserrat" , sans-serif;
+    font-size: 12px;
 }
 .notifications {
     overflow: auto;
@@ -388,7 +458,7 @@ form{
     width: 90%;
 }
 .notification-details h1 {
-    font-size: 15px;
+    font-size: 20px !important;
 }
 .icon {
     padding: 15px;
@@ -423,9 +493,160 @@ form{
 
 
 .empty {
-    border: 1px solid black;
-    margin: 10px;
-    padding: 10px;
+    /* border: 1px solid black; */
+    margin: 25px;
+    padding: 25px;
+    text-align:center;
     border-radius: 10px;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;;
+}
+input[type='checkbox']{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+    margin: 0 auto;
+}
+.switchDesc {
+    margin: 0 auto;
+}
+#switchLabel {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 50px;
+	height: 25px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+#switchLabel:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.switch:checked + #switchLabel {
+	background: #bada55;
+}
+
+.switch:checked + #switchLabel:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+#switchLabel:active:after {
+	width: 130px;
+}
+.cover {
+    background-color: #42df6d;
+    height: 150px;
+    border-radius: 25px;
+    margin-bottom: 60px;
+    position: relative;
+}
+.profile {
+    width: 130px;
+    height: 130px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flash-message {
+    background: #42df6d;
+    width: 40%;
+    position: fixed;
+    z-index: 1;
+    right: 10px;
+    height: 40px;
+    bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+.none {
+    display: none;
+}
+.overlay {
+    /* background: white; */
+    border-radius: 25px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+}
+.overlay {
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(0, 0, 0, 0.572) ;
+}
+.overlay i {
+    font-size: 5rem;
+}
+.disabled {
+    cursor: not-allowed !important;
+}
+.special-message {
+    text-align: center;
+}
+.chat-link {
+    color: white;
+    background: #42df6d;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-family: "'Montserrat'";
+    font-family: "Montserrat", sans-serif;
+    display: inline-block;
+}
+.chat-link:hover {
+    background: #2bab4d;
+}
+.messageContent {
+    color: #42df6d;
+}
+
+.users {
+    width: 95% !important;
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(23, 23, 23, 0.364) !important;
+}
+table {
+    color: white !important;
+}
+.form-group input,
+.form-group textarea {
+    background: none !important;
+    border: none;
+    border-radius: 0px !important;
+    outline: none !important;
+    border-bottom: 1px solid #42df6d;
+}
+.form-group input:focus {
+    box-shadow: none;
+}
+.create-user button {
+    background-color: #42df6d;
+    color: black;
 }

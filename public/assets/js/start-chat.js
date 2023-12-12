@@ -5,10 +5,19 @@ import subscriptions from "./subscriptions.js";
 const contacts = document.querySelectorAll(".contact");
 contacts.forEach(contact => {
     contact.addEventListener("click", function() {
+    const overlay = document.querySelector(".overlay");
+    if(!overlay.classList.contains("none")) {
+        overlay.classList.add("none");
+        overlay.style.display = "none";
+    }
     const name = contact.dataset.name;
     const id = contact.dataset.id;
     const key = contact.dataset.key;
-    
+    let img = contact.dataset.img;
+    // if(!img) {
+    //     img = "https://placehold.co/50x50";
+    // }
+     
     const activeContact = document.querySelector(".active-contact");
     activeContact?.classList.remove("active-contact");
 
@@ -17,6 +26,8 @@ contacts.forEach(contact => {
     recieverId.value = id;
     const usernameLabel = document.querySelector(`.user-contact`);
     usernameLabel.textContent = name;
+    const profileImage = document.querySelector(".profile-image img");
+    profileImage.setAttribute("src", `${ !img ? 'https://placehold.co/50x50' : '/uploads/' + img }`);
 
         
     const senderId = document.getElementById("sender_id");
@@ -38,6 +49,7 @@ contacts.forEach(contact => {
         console.log(subscriptions)
 
         channel.bind('dispatch-message', function(data) {
+            console.log(data);
             const recentMessage = document.querySelector(".active-contact .recent-messages");
             const chatBox = document.querySelector(".chat-box");
             const sender_id = document.getElementById("sender_id");
@@ -46,7 +58,7 @@ contacts.forEach(contact => {
             // into the chat box
 
             if(parseInt(sender_id.value) !== data.sender_id) {
-                chatBox.innerHTML += messageTemplate("reciever", data.message, "testing");
+                chatBox.innerHTML += messageTemplate("reciever", data.message, data.name, data.profile_pic, data.type, data.task_id);
             } 
             
             var myDiv = document.querySelector('.chat-box');
@@ -55,6 +67,7 @@ contacts.forEach(contact => {
 
         axios.get(`/get/message/${key}`)
             .then(res => {
+                console.log(res);
                 const { messages } = res.data[0];
                 const senderId = res.data[1];
                 const messageCollection = JSON.parse(messages);                
@@ -63,9 +76,9 @@ contacts.forEach(contact => {
                 messageCollection.forEach(message => {
                     let template = "";
                     if(message.sender == senderId) {
-                        template = messageTemplate("sender", message.message, message.name);
+                        template = messageTemplate("sender", message.message, message.name, message.profile_pic, message.type, message.task_id);
                     } else {
-                        template = messageTemplate("reciever", message.message, message.name);
+                        template = messageTemplate("reciever", message.message, message.name, message.profile_pic, message.type, message.task_id);
                     }
                     chatbox.innerHTML += template;
                     

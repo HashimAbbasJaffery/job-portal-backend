@@ -32,8 +32,10 @@ class MessageController extends Controller
         $notifications = [
             ...$notifications,
             [
+                "id" => (string)str()->uuid(),
                 "message" => $message,
-                "isRead" => false
+                "isRead" => false,
+                "type" => "message"
             ]
         ];
         if($sender_id) {
@@ -56,14 +58,14 @@ class MessageController extends Controller
         event(new NotificationEvent($sender_id, $reciever_id, $message));
         $this->storeMessageNotification($sender_id, $reciever_id, $message);
 
-        $sender = User::select("name")->find($sender_id);
-
-
+        $sender = User::find($sender_id);
+        
         $messageInstance = Message::where("message_id", $key)->first();
         $messages = json_decode($messageInstance->messages);
         $updatedMessages = [
             ...$messages,
             [
+                "profile_pic" => $sender->profile->profile_picture,
                 "sender" => $sender_id,
                 "message" => $message,
                 "name" => $sender->name,

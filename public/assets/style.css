@@ -7,18 +7,25 @@
   --secondary-font: "Poppins", sans-serif;
 }
 body {
-  background: whitesmoke;
+  /* background-colo: linear-gradient(45deg,#42df6d, #28a84a); */
+  background-image: url("/assets/img/bg.jpg");
+  background-size: cover;
   color: var(--base);
+  color: #42df6d;
   font-family: var(--primary-font);
+  /* filter: brightness(0.1); */
 }
 .login {
   width: 30%;
   margin: 0 auto;
   padding: 50px;
-  
+  /* border: 5px solid #42df6d; */
   border-radius: 25px;
-  background-color: white;
-  box-shadow: 0.5px 0.5px 3px rgb(77, 77, 77) inset;
+  background-color: rgba(24, 24, 24, 0.3);
+  backdrop-filter: blur(15px);
+  /* background:linear-gradient(45deg, black, #103349); */
+  /* box-shadow: 0.5px 0.5px 10px #42df6d; */
+  /* border: 1px solid #42df6d; */
 }
 #wrapper {
   display: flex;
@@ -29,6 +36,9 @@ body {
 #content form {
   padding: 20px;
 }
+label{
+  color: #42df6d !important;
+}
 .login-header {
   text-align: center;
   font-weight: bold;
@@ -36,17 +46,34 @@ body {
   margin-top: 10px;
 }
 #login-button {
-  background: var(--base);
+  /* border: 3px solid #42df6d; */
+  box-shadow: 0.5px 0.5px 10px black;
+  background: #42df6d;
+  color: black;
 }
 #login-button:hover {
-  background: var(--baseShade);
+  box-shadow: 0.5px 0.5px 10px #42df6d;
+  /* background: #35b356; */
+  color: black;
+}
+input{
+  background: transparent !important;
+  outline:none;
+  color: #42df6d !important;
+  font-size: 14px !important;
+  border: none !important;
+  margin-bottom: 10px !important;
+  border-radius: 0px !important; 
+  border-bottom: 2px solid #42df6d !important;
 }
 #content input, #content textarea {
   border: 1px solid black;
   color: black;
 }
 #content input::placeholder , #content textarea::placeholder{
-  color: rgb(111, 110, 110);
+  color: rgba(66, 223, 109, 0.5);
+  
+  /* opacity: 0.8; */
 }
 #logo-detail {
   display: flex;
@@ -56,4 +83,8 @@ body {
 #content textarea {
     resize: none;
     height: 90px;
+}
+.register:hover {
+  box-sizing: border-box;
+  border-bottom: 3px solid #42df6d;
 }

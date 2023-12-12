@@ -1,28 +1,11 @@
 import paginationTemplate from "./paginationTemplate.js";
 import debounce from "./debounce.js";
+import boilerPlate from "./paginationBoilerplate.js";
 
-const getUsers = (url) => {
-axios.get(url)
-    .then(res => {
-        const pagination = document.querySelector(".pagination");
-        const response = res.data;
-        console.log(response);
-        const links = response.links;
-        console.log(links)
-        let linkMarkup = "";
-        links.forEach(link => {
-            linkMarkup += paginationTemplate(link.url, link.label, link.active);
-        })
-        pagination.innerHTML = linkMarkup;
-        
-    })
-    .catch(err => {
-        console.log(err)
-    })
-}
 
 
 const userTableRow = (
+    id,
     name,
     email,
     badge_color,
@@ -40,7 +23,7 @@ const userTableRow = (
     <td>
       <button type="button" class="btn btn-outline-primary">Update</button>
       <button type="button" class="btn btn-outline-danger">Delete</button>
-      <button type="button" class="btn btn-outline-warning">Notify</button>
+      <a href="/task/${id}/create" class="btn btn-outline-warning">Assign Task</a>
     </td>
   </tr>
     `;
@@ -49,7 +32,7 @@ const userTableRow = (
 const search = document.getElementById("search");
 const getPaginationLinks = debounce(() => {
     const uri = `/api/users/get?keyword=${search.value}`;
-    getUsers(`/api/users/get?keyword=${search.value}`);
+    boilerPlate(`/api/users/get?keyword=${search.value}`);
 
     // rendering the data which satisfies by the keyword
 
@@ -63,6 +46,7 @@ const getPaginationLinks = debounce(() => {
         let rowMarkup = "";
         data.forEach((datum) => {
             rowMarkup += userTableRow(
+                datum.id,
                 datum.name,
                 datum.email,
                 datum.profile.role.badge_color,
@@ -77,5 +61,5 @@ const getPaginationLinks = debounce(() => {
 
 }, 250)
 search.addEventListener("keyup", getPaginationLinks)
-getUsers("/api/users/get");
-export default getUsers;
+boilerPlate("/api/users/get");
+export default boilerPlate;

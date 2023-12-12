@@ -1,3 +1,4 @@
+
 const paginationTemplate = (link, name, active) => {
     return `<li class="page-item"><a class="page-link ${
         !link ? "disabled-link" : ""
@@ -26,7 +27,8 @@ const userTableRow = (
     class="btn btn-outline-primary text-primary update_button">Update</a>
 
     <button type="button" onclick="deleteRecord(${id})" class="btn btn-outline-danger">Delete</button>
-      <button type="button" class="btn btn-outline-warning">Notify</button>
+      
+      <a href="/task/${id}/create" class="btn btn-outline-warning">Assign Task</a>
     </td>
   </tr>
     `;
