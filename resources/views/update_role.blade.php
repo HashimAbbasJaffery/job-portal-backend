@@ -25,12 +25,33 @@
                             <input type="checkbox" id="switch1" @checked($role->can_edit_user)  value="{{ $role->can_edit_user ? 'on' : 'off' }}" class="edit_user switch"/><label onclick="toggleSwitch('edit_user')" for="switch1" class="switchDesc" id="switchLabel">Toggle</label>
                         </div>
                          <div class="custom-control custom-switch">
-                         <p>Assign Tasks<p>
+                         <p>View Users<p>
                             <input type="checkbox" id="switch2" @checked($role->can_assign_tasks)  value="{{ $role->can_assign_tasks ? 'on' : 'off' }}" class="assign_task switch"/><label onclick="toggleSwitch('assign_task')" for="switch2" class="switchDesc" id="switchLabel">Toggle</label>
                         </div>
                          <div class="custom-control custom-switch">
-                         <p>Notify User<p>
+                         <p>Delete User<p>
                             <input type="checkbox" id="switch3" @checked($role->can_notify_user) value="{{ $role->can_notify_user ? 'on' : 'off' }}"  class="notify_user switch"/><label onclick="toggleSwitch('notify_user')" for="switch3" class="switchDesc" id="switchLabel">Toggle</label>
+                        </div>
+                      
+                    </div>
+                      
+                    <div class="switches" style="display: flex; justify-content: space-around; margin-top: 10px;">
+                        
+                        <div class="custom-control custom-switch">
+                            <p>Create Role</p>
+                            <input type="checkbox" id="switch4" @checked($role->can_create_role) value="{{ $role->can_create_role ? 'on' : 'off' }}" class="create_role switch"/><label onclick="toggleSwitch('create_role')" for="switch4" class="switchDesc" id="switchLabel">Toggle</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <p>Edit Role<p>
+                            <input type="checkbox" id="switch5" @checked($role->can_edit_role) value="{{ $role->can_edit_role ? 'on' : 'off' }}" class="edit_role switch"/><label onclick="toggleSwitch('edit_role')" for="switch5" class="switchDesc" id="switchLabel">Toggle</label>
+                        </div>
+                         <div class="custom-control custom-switch">
+                         <p>View Roles<p>
+                            <input type="checkbox" id="switch6" @checked($role->can_view_role) value="{{ $role->can_view_role ? 'on' : 'off' }}" class="assign_role switch"/><label onclick="toggleSwitch('assign_role')" for="switch6" class="switchDesc" id="switchLabel">Toggle</label>
+                        </div>
+                         <div class="custom-control custom-switch">
+                         <p>Delete Roles<p>
+                            <input type="checkbox" id="switch7" @checked($role->delete_role) value="{{ $role->delete_role ? 'on' : 'off' }}" class="notify_role switch"/><label onclick="toggleSwitch('notify_role')" for="switch7" class="switchDesc" id="switchLabel">Toggle</label>
                         </div>
                         
                     </div>
@@ -73,17 +94,27 @@
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
                 const name = getElementValue(".name");
+                
                 const create_user = getElementValue(".create_user")
                 const edit_user = getElementValue(".edit_user")
-                const assign_task = getElementValue(".assign_task")
-                const notify_user = getElementValue(".notify_user")
+                const view_users = getElementValue(".assign_task")
+                const delete_user = getElementValue(".notify_user")
+                
+                const create_role = getElementValue(".create_role")
+                const edit_role = getElementValue(".edit_role")
+                const view_roles = getElementValue(".assign_role")
+                const delete_role = getElementValue(".notify_role")
 
                 axios.post("/role/{{ $role->id }}/update", {
-                    name,
+                     name,
                     create_user,
                     edit_user,
-                    assign_task,
-                    notify_user
+                    view_users,
+                    delete_user,
+                    create_role,
+                    edit_role,
+                    view_roles,
+                    delete_role
                 })
                 .then(res => {
                     const errors = res.data.errors;

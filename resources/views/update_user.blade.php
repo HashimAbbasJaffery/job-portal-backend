@@ -69,7 +69,7 @@
                 const last_name = getElementValue("last_name");
                 const salary = getElementValue("salary");
 
-                axios.post("/users/create", {
+                axios.post("/user/{{ $user->id }}/edit", {
                     role,
                     name,
                     last_name,

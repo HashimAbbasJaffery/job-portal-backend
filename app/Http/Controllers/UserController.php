@@ -8,19 +8,39 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
     public function get() {
+
+        
+        $response = Gate::allows("allowed-user", auth()->user()->profile->role);
+        if(!$response) {
+            return redirect()->back();
+        };
+
+        $user = User::find(auth()->user()->id);
         $users = User::paginate(5);
         return view("users", compact("users"));
     }
 
     public function create() {
+        
+        $response = Gate::inspect("create", auth()->user());
+        if(!$response->allowed()) {
+            return redirect()->back();
+        };
         $roles = Role::all();
         return view("create_user", compact("roles"));
     }
     public function store() {
+
+        $response = Gate::inspect("create", auth()->user());
+        if(!$response->allowed()) {
+            return redirect()->back();
+        };
+
         $role = (int)request()->get("role");
         $name = request()->get("name");
         $last_name = request()->get("last_name");
@@ -77,6 +97,10 @@ class UserController extends Controller
         return 1;
     }
     public function edit(User $user) {
+        $response = Gate::allows("allowed-user-update", auth()->user());
+        if(!$response) {
+            return redirect()->back();
+        };
         $role = (int)request()->get("role");
         $name = request()->get("name");
         $last_name = request()->get("last_name");
@@ -112,14 +136,21 @@ class UserController extends Controller
             "last_name" => $last_name,
             "registration_code" => $uuid
         ]);
-
         return 1;
     }
     public function update(User $user) {
+        $response = Gate::inspect("update", auth()->user());
+        if(!$response->allowed()) {
+            return redirect()->back();
+        };
         $roles = Role::all();
         return view("update_user", compact("user", "roles"));
     }
     public function destroy(User $user) {
+        $response = Gate::inspect("delete", auth()->user());
+        if(!$response->allowed()) {
+            return redirect()->back();
+        };
         $user->delete();
         return 1;
     }

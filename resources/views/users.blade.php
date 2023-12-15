@@ -37,10 +37,14 @@
                                 <td>{{ count($user->tasks) }} Tasks</td>
                                 <td>{{ $user->profile->salary }}</td>
                                 <td>
-                                    <a href="/user/{{ $user->id }}/update"
-                                        class="btn btn-outline-primary text-primary update_button">Update</a>
-                                    <button type="button" class="btn btn-outline-danger delete_button"
-                                        data-id="{{ $user->id }}">Delete</button>
+                                    @can("allowed-user-update", auth()->user())
+                                        <a href="/user/{{ $user->id }}/update"
+                                            class="btn btn-outline-primary text-primary update_button">Update</a>
+                                    @endcan
+                                    @can("allowed-user-delete")
+                                        <button type="button" class="btn btn-outline-danger delete_button"
+                                            data-id="{{ $user->id }}">Delete</button>
+                                    @endcan
                                     <a href="/task/{{ $user->id }}/create" class="btn btn-outline-warning">Assign Task</a>
                                 </td>
                             </tr>

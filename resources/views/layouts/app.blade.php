@@ -27,11 +27,16 @@
                 <img src="/assets/img/logo.png" height="50px" style="margin: 10px 0px; margin-bottom: 55px !important;">
                 {{-- <p style="text-align: center;padding: 10px; font-family: sans-serif">Welcome <br> {{ auth()->user()->name }}</p> --}}
                 <nav>
-                    <ul onclick="redirect('/users')"><li class="{{ request()->routeIs("users") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;"></span></a></li></ul>
+                    @can("allowed-user", auth()->user())
+                        <ul onclick="redirect('/users')"><li class="{{ request()->routeIs("users") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-user"></i><span style="display: inline-block; margin-left: 20px;"></span></a></li></ul>
+                    @endcan
                     <ul onclick="redirect('/tasks')"><li class="{{ request()->routeIs("tasks") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-list-check"></i><span style="display: inline-block; margin-left: 20px;"></span></a></li></ul>
                     <ul onclick="redirect('/chats')"><li class="{{ request()->routeIs("chats") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-message"></i><span style="display: inline-block; margin-left: 20px;"></span></a></li></ul>
                     {{-- <i class=""></i> --}}
-                    <ul><li onclick="redirect('/roles')" class="{{ request()->routeIs("roles") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-hand-sparkles"></i><span style="display: inline-block; margin-left: 20px;"></span></a></li></ul>
+                    
+                    @can("allowed-role", auth()->user())
+                        <ul><li onclick="redirect('/roles')" class="{{ request()->routeIs("roles") ? "active" : "" }}"><a href="#"><i class="fa-solid fa-hand-sparkles"></i><span style="display: inline-block; margin-left: 20px;"></span></a></li></ul>
+                    @endcan
                     <ul onclick="redirect('notifications')">
                         <li class="{{ request()->routeIs("notifications") ? "active" : "" }}">
                             <a href="#" >

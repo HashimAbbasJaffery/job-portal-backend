@@ -21,8 +21,14 @@
                             <th scope="col">Name</th>
                             <th scope="col">Create User</th>
                             <th scope="col">Edit User</th>
-                            <th scope="col">Assign Tasks</th>
-                            <th scope="col">Notify User</th>
+                            <th scope="col">View Users</th>
+                            <th scope="col">Delete User</th>
+                            
+                            <th scope="col">Create Role</th>
+                            <th scope="col">Edit Role</th>
+                            <th scope="col">View Roles</th>
+                            <th scope="col">Delete Role</th>
+                    
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -50,11 +56,40 @@
                                 @else 
                                     <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
                                 @endif
+                                
+                                @if($role->can_create_role)
+                                    <td><i class="fa-solid fa-check" style="color: #42df6d;"></i></td>
+                                @else 
+                                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
+                                @endif
+                                
+                                @if($role->can_edit_role)
+                                    <td><i class="fa-solid fa-check" style="color: #42df6d;"></i></td>
+                                @else 
+                                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
+                                @endif
+
+                                
+                                @if($role->can_view_role)
+                                    <td><i class="fa-solid fa-check" style="color: #42df6d;"></i></td>
+                                @else 
+                                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
+                                @endif
+                                
+                                @if($role->delete_role)
+                                    <td><i class="fa-solid fa-check" style="color: #42df6d;"></i></td>
+                                @else 
+                                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
+                                @endif
                                 <td>
-                                    <a href="/role/{{ $role->id }}/update"
-                                        class="btn btn-outline-primary text-primary update_button">Update</a>
-                                    <button type="button" class="btn btn-outline-danger delete_button"
-                                        data-id="{{ $role->id }}">Delete</button>
+                                    @can("allowed-role-update", auth()->user())
+                                        <a href="/role/{{ $role->id }}/update"
+                                            class="btn btn-outline-primary text-primary update_button">Update</a>
+                                    @endcan
+                                    @can("allowed-role-delete", auth()->user())
+                                        <button type="button" class="btn btn-outline-danger delete_button"
+                                            data-id="{{ $role->id }}">Delete</button>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

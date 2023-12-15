@@ -10,6 +10,11 @@ const roleTableRow = role => {
             <td><i class="fa-solid ${ role.can_edit_user ? 'fa-check' : 'fa-xmark' }" style="color: ${ role.can_edit_user ? '#42df6d' : 'red' };"></i></td>
             <td><i class="fa-solid ${ role.can_assign_tasks ? 'fa-check' : 'fa-xmark' }" style="color: ${ role.can_assign_tasks ? '#42df6d' : 'red' };"></i></td>
             <td><i class="fa-solid ${ role.can_notify_user ? 'fa-check' : 'fa-xmark' }" style="color: ${ role.can_notify_user ? '#42df6d' : 'red' };"></i></td>
+            <td><i class="fa-solid ${ role.can_create_role ? 'fa-check' : 'fa-xmark' }" style="color: ${ role.can_create_role ? '#42df6d' : 'red' };"></i></td>
+            <td><i class="fa-solid ${ role.can_edit_role ? 'fa-check' : 'fa-xmark' }" style="color: ${ role.can_edit_role ? '#42df6d' : 'red' };"></i></td>
+            <td><i class="fa-solid ${ role.can_view_role ? 'fa-check' : 'fa-xmark' }" style="color: ${ role.can_view_role ? '#42df6d' : 'red' };"></i></td>
+            <td><i class="fa-solid ${ role.delete_role ? 'fa-check' : 'fa-xmark' }" style="color: ${ role.delete_role ? '#42df6d' : 'red' };"></i></td>
+            
             <td>
                 <a href="/role/${role.id}/update"
                     class="btn btn-outline-primary text-primary update_button">Update</a>
