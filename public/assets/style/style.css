@@ -635,13 +635,32 @@ input[type='checkbox']{
 table {
     color: white !important;
 }
+#search {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#file_extension option,
+#role option {
+    color: black;
+}
+
+#file_extension,
+#role,
+#search,
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+#old_password,
+#new_password {
     background: none !important;
     border: none;
     border-radius: 0px !important;
     outline: none !important;
     border-bottom: 1px solid #42df6d;
+    color: white;
+}
+input {
+    color: white;
 }
 .form-group input:focus {
     box-shadow: none;
@@ -649,4 +668,13 @@ table {
 .create-user button {
     background-color: #42df6d;
     color: black;
+}
+.stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.stats-card {
+    background-color:blue; 
+    width: 33.33%;
 }

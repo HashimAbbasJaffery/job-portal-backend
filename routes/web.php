@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TaskController;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +26,16 @@ Route::middleware("auth")->group(function() {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to("/login");
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $users = User::count();
+    $tasks = Task::where("status", "on working")->count();
+    $completedTasks = Task::where("status", "pending approval")->count();
+    $tasksColletion = Task::orderBy("created_at", "desc")->limit(5)->get();
+   
+    return view('dashboard', compact("users", "tasks", "completedTasks", "tasksColletion"));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get("/chats", [ChatController::class, "index"])->name("chats");

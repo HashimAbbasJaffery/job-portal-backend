@@ -7,16 +7,16 @@
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     @endpush
     <div id="mainbod">
-        <div id="user-table" class="users">
+        <div id="user-table" class="users" style="color: white;">
             <h1>Task Details</h1>
             <div class="task-details">
                 <div class="detail">
                     <h3 style="font-size: 20px;">Task Title</h3>
-                    <p style="font-style: italic; color: black">{{ $task->name }}</p>
+                    <p style="font-style: italic; color: white">{{ $task->name }}</p>
                 </div>
                 <div class="details">
                     <h3 style="font-size: 20px;">Task Description</h3>
-                    <pre style="font-style: italic; color: black;">{{ $task->description }}</pre>
+                    <pre style="font-style: italic; color: white;">{{ $task->description }}</pre>
                 </div>
                 
                 <div class="details" style="margin-bottom: 10px;">
@@ -44,7 +44,7 @@
                 @endphp
                 <div class="details">
                     <h3 style="font-size: 20px;">Deadline</h3>
-                    <div class="extensions" style="display: flex; flex-wrap: wrap; width: 50%; color: black;">
+                    <div class="extensions" style="display: flex; flex-wrap: wrap; width: 50%; color: white;">
                      @if($daysRemaining === 0) 
                         <p>{{ $targetDate->isToday() ? "Today" : "Tomorrow" }}</p>
                     @else 
