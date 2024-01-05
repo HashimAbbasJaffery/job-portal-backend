@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\DispatchMessage;
 use App\Events\NotificationEvent;
+use App\Jobs\SendTaskJob;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Models\File;
@@ -145,15 +146,17 @@ class TaskController extends Controller
             "deadline" => request()->get("deadline")
         ]);
 
-        event(new NotificationEvent(auth()->user()->id, $user_id, "New Task", "new_task"));
-        event(new DispatchMessage(
-                "You have recieved new task", 
-                auth()->user()->id, $user_id, 
-                "new_task", 
-                request()->get("deadline"),
-                $task->id
-            )
-        );
+        // event(new NotificationEvent(auth()->user()->id, $user_id, "New Task", "new_task"));
+        // event(new DispatchMessage(
+        //         "You have recieved new task", 
+        //         auth()->user()->id, $user_id, 
+        //         "new_task", 
+        //         request()->get("deadline"),
+        //         $task->id
+        //     )
+        // );
+
+        dispatch(new SendTaskJob($user_id, request()->get("deadline"), $task->id));
 
         $this->storeMessageNotification(auth()->user()->id, $user_id, "New Task");
         $this->storeMessage(auth()->user()->id, $uuid, "You have recieved new task", $task->id);

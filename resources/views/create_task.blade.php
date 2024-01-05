@@ -6,7 +6,11 @@
     <div id="mainbod">
         <div id="user-table" class="users">
             <h1>Assign Task</h1>
-            <form id="createTask" class="createTask">
+            <form id="createTask" class="createTask" style="position: relative;">
+            <div class="loader-box" style="display: none; align-items: center; justify-content: center;background: #42df6c96; width: 101%; height: 100%; position: absolute; z-index: 2;">
+                    <span class="loader"></span>
+                </div>
+                
                 <div class="create-user" style="margin-top: 20px;">
                     <label for="role" style="width: 100%; position: relative;">
                         <p>Select Submission format</p>
@@ -63,6 +67,9 @@
             const form = document.getElementById("createTask");
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
+                const loaderBox = document.querySelector(".loader-box");
+                loaderBox.style.display = "flex";
+                
                 const file_extension = getElementValue("file_extension");
                 const task_name = getElementValue("task_name");
                 const task_description = getElementValue("task_description");

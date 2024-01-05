@@ -22,14 +22,14 @@ class RegisteredUserController extends Controller
     public function registration_code() {
         return view("auth.register");
     }
-    public function check_uuid(Request $request) {
-        $request->validate([
-            "registration_code" => "required"
-        ]);
-        $code = $request->get("registration_code");
-        
+    public function check_uuid(Request $request, $uuid) {
+        $code = $uuid;
         $user = User::where("registration_code", $code)->first();
-    
+
+        if(!$user) {
+            return to_route("login");
+        }
+        
         session()->put("registering_user", $user);
         session()->put("code", $code);
 
@@ -72,7 +72,8 @@ class RegisteredUserController extends Controller
         $user->update([
             "email" => $personal_info["email"],
             "address" => $personal_info["address"],
-            "password" => Hash::make($request->get("password"))
+            "password" => Hash::make($request->get("password")),
+            "registration_code" => ""
         ]);
 
         Notification::create([

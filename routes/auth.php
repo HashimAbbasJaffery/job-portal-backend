@@ -15,10 +15,10 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'registration_code'])
                 ->name('register');
     
-    Route::post("/check", [RegisteredUserController::class, "check_uuid"])
+    Route::get("/check/{uuid}", [RegisteredUserController::class, "check_uuid"])
                 ->name("check_uuid");
     
-    Route::get("/personal_info", [RegisteredUserController::class, "personal_info"])
+    Route::get("/signup", [RegisteredUserController::class, "personal_info"])
                 ->name("personal_info");
 
     Route::post("/store_personal_info", [RegisteredUserController::class, "store_personal_info"])

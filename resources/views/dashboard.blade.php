@@ -38,7 +38,6 @@
 
     </div>
     <h1 style="margin-top: 50px;">Recent tasks</h1>
-            
                 @if(count($tasksColletion) > 0)
                 <table class="table table-striped">
                     <thead>

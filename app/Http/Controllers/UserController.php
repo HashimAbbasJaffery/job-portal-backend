@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CreateAccountMail;
+use App\Jobs\CreateAccountMailJob;
+
 
 class UserController extends Controller
 {
@@ -45,6 +49,7 @@ class UserController extends Controller
         $name = request()->get("name");
         $last_name = request()->get("last_name");
         $salary = request()->get("salary");
+        $email = request()->get("email");
 
         // Validating the incoming inputs
 
@@ -52,7 +57,8 @@ class UserController extends Controller
             "role" => "required",
             "name" => "required|min:4|max:20",
             "last_name" => "required|min:4|max:20",
-            "salary" => "required|numeric"
+            "salary" => "required|numeric",
+            "email" => "required|email"
         ]);
 
         // If Validating fails 
@@ -61,6 +67,7 @@ class UserController extends Controller
             return response()->json(["errors" => $validator->errors()]);
         }
 
+    
         // Creating associated profile for the user
         $profile = Profile::create([
             "tasks_assigned" => 0,
@@ -76,8 +83,20 @@ class UserController extends Controller
             "address" => "",
             "profile_id" => $profile->id,
             "password" => "",
-            "registration_code" => $code
+            "registration_code" => $code,
+            "email" => $email
         ]);
+
+        // Sending Email to the incoming employee
+
+        dispatch(new CreateAccountMailJob($name, $code, $email));
+        // $mailData = [
+        //     "name" => $name,
+        //     "uuid" => $code
+        // ];
+    
+        // Mail::to($email)->send(new CreateAccountMail($mailData));
+        
 
         // Making the chats between user being created and the one who is creating it
         $message_id = (string)str()->uuid();

@@ -11,6 +11,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TaskController;
 use App\Models\Task;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CreateAccountMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,16 +27,25 @@ use App\Models\Task;
 Route::middleware("auth")->group(function() {
 
 
+Route::get("sendEmail", function() {
+    $mailData = [
+        "title" => "Techzeme",
+        "body" => "It is the testing email"
+    ];
+
+    Mail::to("habbas2121@outlook.com")->send(new CreateAccountMail($mailData));
+
+    dd("Email Sent Successfully");
+});
 Route::get('/', function () {
     return redirect()->to("/login");
 });
 
 Route::get('/dashboard', function () {
     $users = User::count();
-    $tasks = Task::where("status", "on working")->count();
-    $completedTasks = Task::where("status", "pending approval")->count();
-    $tasksColletion = Task::orderBy("created_at", "desc")->limit(5)->get();
-   
+    $tasks = Task::where("status", "on working")->where("assigner_id", auth()->user()->id)->count();
+    $completedTasks = Task::where("status", "pending approval")->where("user_id", auth()->user()->id)->count();
+    $tasksColletion = Task::orderBy("created_at", "desc")->where("user_id", auth()->user()->id)->limit(5)->get();
     return view('dashboard', compact("users", "tasks", "completedTasks", "tasksColletion"));
 })->middleware(['auth', 'verified'])->name('dashboard');
 

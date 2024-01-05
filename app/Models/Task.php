@@ -9,7 +9,6 @@ class Task extends Model
 {
     protected $guarded = [];
     use HasFactory;
-
     public function assigned_by() {
         return $this->belongsTo(User::class, "assigner_id");
     }

@@ -6,7 +6,10 @@
     <div id="mainbod">
         <div id="user-table" class="users">
             <h1>Create User</h1>
-            <form id="createUser" class="createUser">
+            <form id="createUser" class="createUser" style="position: relative;">
+                <div class="loader-box" style="display: none; align-items: center; justify-content: center;background: #42df6c96; width: 101%; height: 100%; position: absolute; z-index: 2;">
+                    <span class="loader"></span>
+                </div>
                 <div class="create-user" style="margin-top: 20px;">
                     <label for="role" style="width: 100%; position: relative;">
                         <p>Select Role</p>
@@ -28,6 +31,13 @@
                         <p>last name</p>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Enter last name" id="last_name" aria-describedby="emailHelp">
+                        </div>
+                    </label>
+                    
+                    <label for="last_name" class="create-user-field">
+                        <p>Email</p>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Enter last name" id="email" aria-describedby="emailHelp">
                         </div>
                     </label>
                     <label for="salary" class="create-user-field">
@@ -64,16 +74,20 @@
             const form = document.getElementById("createUser");
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
+                const loaderBox = document.querySelector(".loader-box");
+                loaderBox.style.display = "flex";
                 const role = getElementValue("role");
                 const name = getElementValue("name");
                 const last_name = getElementValue("last_name");
                 const salary = getElementValue("salary");
+                const email = getElementValue("email");
 
                 axios.post("/users/create", {
                     role,
                     name,
                     last_name,
-                    salary
+                    salary,
+                    email
                 })
                 .then(res => {
                     const errors = res.data.errors;
