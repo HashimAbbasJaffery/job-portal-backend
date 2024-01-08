@@ -62,3 +62,7 @@ Difficulty in managements of employees, their tasks, their work, less communicat
 - Laravel Version >= 10.0.0
 - PHP Version >= 8.1.0
 - Axios >= 1.6.3
+
+## Demo
+
+[Demo Of the Project](https://youtu.be/PbpA2esbfFI)
